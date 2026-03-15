@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricia de Toledo | Design de Interiores</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS: Váriaveis e Reset */
+        :root {
+            --primary-color: #F9F6F0; /* Bege muito suave e chique */
+            --text-color: #2C2C2C; /* Quase preto, mais suave para leitura */
+            --accent-color: #9A7B66; /* Tom terroso sofisticado */
+            --bg-color: #ffffff;
+            --heading-font: 'Playfair Display', serif; /* Fonte de títulos */
+            --body-font: 'Montserrat', sans-serif; /* Fonte de textos */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            font-family: var(--body-font);
+            font-weight: 300;
+        }
+
+        /* Navegação */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Estrutura Geral das Seções */
+        section {
+            padding: 8rem 5% 6rem;
+            min-height: auto;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+
+        /* Seção Início (Com Imagem de Fundo) */
+        #inicio {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        #inicio h1 {
+            font-family: var(--heading-font);
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #inicio .subtitle {
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 650px;
+            letter-spacing: 1px;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            font-family: var(--body-font);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+            background-color: white;
+        }
+
+        /* Seção Sobre */
+        #sobre {
+            background-color: var(--bg-color);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #sobre p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        #sobre strong {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        /* Seção Serviços */
+        #servicos {
+            background-color: var(--primary-color);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .servico-card {
+            background-color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .servico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .servico-card h3 {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .servico-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Seção Projetos (Galeria) */
+        #projetos {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .projeto-item {
+            position: relative;
+            background-color: #e0e0e0;
+            height: 350px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .projeto-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .projeto-item:hover .projeto-img {
+            transform: scale(1.08);
+        }
+
+        .projeto-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .projeto-item:hover .projeto-overlay {
+            transform: translateY(0);
+        }
+
+        .projeto-overlay h4 {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        /* Contato e Rodapé */
+        #contato {
+            background-image: linear-gradient(to bottom, var(--primary-color), var(--bg-color));
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.8rem;
+            margin: 2.5rem 0;
+            color: var(--text-color);
+            font-family: var(--heading-font);
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: #ccc;
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Botão Flutuante do WhatsApp */
+        .whatsapp-flutuante {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 9999;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-flutuante:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .whatsapp-flutuante svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            #inicio h1 {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .whatsapp-flutuante {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+            .whatsapp-flutuante svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#inicio" class="logo">Patricia de Toledo</a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h1>Patricia de Toledo</h1>
+        <p class="subtitle">Design de Interiores que transforma o seu espaço em poesia e funcionalidade.</p>
+        <a href="#contato" class="btn">Solicitar Orçamento</a>
+    </section>
+
+    <section id="sobre">
+        <h2 class="section-title">Sobre Mim</h2>
+        <p>Sou Patricia de Toledo, Designer de Interiores formada pela renomada <strong>Arquitec</strong>. Meu foco é unir estética, funcionalidade e conforto para criar ambientes que reflitam a verdadeira essência de quem os habita. Acredito que um bom design tem o poder de melhorar a qualidade de vida e trazer bem-estar para o seu dia a dia.</p>
+    </section>
+
+    <section id="servicos">
+        <h2 class="section-title">Serviços Oferecidos</h2>
+        <div class="servicos-grid">
+            <div class="servico-card">
+                <h3>Consultoria Express</h3>
+                <p>Ideal para quem precisa de direcionamento rápido. Auxílio na escolha de cores, mobiliário e layout sem a necessidade de um projeto completo de reforma.</p>
+            </div>
+            <div class="servico-card">
+                <h3>Projeto Completo</h3>
+                <p>Desenvolvimento de todo o espaço, desde o layout e detalhamento de marcenaria até a escolha de acabamentos e iluminação.</p>
+            </div>
+            <div class="servico-card">
+                <h3>Projeto 3D</h3>
+                <p>Visualização realista do seu futuro ambiente. Modelagem eletrônica para que você veja o resultado antes mesmo da obra começar.</p>
+            </div>
+            <div class="servico-card">
+                <h3>Acompanhamento</h3>
+                <p>Gerenciamento estético e acompanhamento de fornecedores durante a execução para garantir que tudo saia exatamente como projetado.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <h2 class="section-title">Meus Projetos</h2>
+        <div class="projetos-grid">
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto Residencial 1" class="projeto-img">
+                <div class="projeto-overlay">
+                    <h4>Sala de Estar Contemporânea</h4>
+                </div>
+            </div>
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto 2" class="projeto-img">
+                <div class="projeto-overlay">
+                    <h4>Quarto Casal Minimalista</h4>
+                </div>
+            </div>
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto 3" class="projeto-img">
+                <div class="projeto-overlay">
+                    <h4>Cozinha Integrada</h4>
+                </div>
+            </div>
+            <div class="projeto-item">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Projeto 4" class="projeto-img">
+                <div class="projeto-overlay">
+                    <h4>Varanda Gourmet</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2 class="section-title">Vamos conversar?</h2>
+        <p>Estou pronta para transformar o seu ambiente. Entre em contato diretamente pelo WhatsApp ou me ligue.</p>
+        
+        <div class="contact-info">
+            <p>📱 <strong>(19) 98231-1697</strong></p>
+        </div>
+        
+        <a href="https://api.whatsapp.com/send?phone=5519982311697&text=Ol%C3%A1%20Patricia!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Design%20de%20Interiores." target="_blank" class="btn">Falar no WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Patricia de Toledo - Design de Interiores. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5519982311697&text=Ol%C3%A1%20Patricia!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Design%20de%20Interiores." target="_blank" class="whatsapp-flutuante" title="Fale comigo no WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.05 2.5a13.45 13.45 0 0 0-11.64 20.18L2.5 29.5l6.98-1.83A13.44 13.44 0 0 0 16.05 29.4a13.46 13.46 0 0 0 0-26.9zm0 24.65a11.16 11.16 0 0 1-5.71-1.57l-.4-.24-4.24 1.11 1.13-4.13-.27-.42a11.17 11.17 0 1 1 9.49 5.25zm6.13-8.38c-.34-.17-2-.99-2.31-1.1-.31-.12-.54-.18-.76.17-.23.34-.87 1.1-.1 1.32.17.22.34.25.68.08s-1.43-.53-2.73-1.69c-1-1.02-1.68-2.28-1.88-2.62s-.02-.53.15-.7c.15-.15.34-.4.5-.59.17-.2.23-.34.34-.57.11-.23.05-.43-.03-.6s-.76-1.84-1.04-2.52c-.28-.66-.56-.57-.76-.58s-.42-.01-.65-.01a1.26 1.26 0 0 0-.91.42c-.31.34-1.2 1.17-1.2 2.85s1.23 3.3 1.4 3.53c.17.23 2.4 3.67 5.82 5.14.82.35 1.45.56 1.95.72.82.26 1.57.22 2.16.13.66-.1 2-.82 2.28-1.61.28-.79.28-1.47.2-1.61-.11-.17-.4-.28-.74-.45z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Rolagem suave e elegante
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
